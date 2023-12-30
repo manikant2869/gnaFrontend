@@ -8,6 +8,11 @@
   .navbar_item{
     background-color: #13357c;
   }
+  .showLogout{
+    position:fixed;
+    top:80px;
+    right:30px;
+  }
   .search_btn{
     background-color: #3654d1;
   }
