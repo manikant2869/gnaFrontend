@@ -1,24 +1,26 @@
 import datacontent from "../assets/data.json";
 import { Slider } from "@mui/material";
 import NorthEastOutlinedIcon from '@mui/icons-material/NorthEastOutlined';
-import { useEffect, useState } from "react";
-import { createElement } from "react";
+import { useEffect, useState ,useContext } from "react";
+import Header from "../containers/Header";
+import { globalContext } from "../context/GlobalContext";
+import { json, useNavigate } from "react-router-dom";
 export default function Main() {
   const data = datacontent;
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [filteredlist, setFilteredList] = useState(data);
   const [popularFilter, setPopularFilter] = useState(new Set());
+  const {userIdentity} = useContext(globalContext)
+  const navigate = useNavigate()
   const recordPerPage = 5;
   const [page, setPage] = useState(1);
   const filterHotels = () => {
-    console.log("current data is ", filteredlist);
     const newList = data.filter(
       (hotel) =>
         hotel.hotelBasicInfo.price &&
         hotel.hotelBasicInfo.price >= priceRange[0] &&
         hotel.hotelBasicInfo.price <= priceRange[1]
     );
-    console.log("Filtered Hotels", newList, priceRange);
     setFilteredList(newList);
   };
 
@@ -33,6 +35,11 @@ export default function Main() {
     }
     timeout = setTimeout(filterHotels, 500);
   }, [priceRange]);
+  useEffect(()=>{
+     if(!userIdentity.auth){
+      navigate("/signup")
+     }
+  },[])
   const handlePopularFilter = (target) => {
     const value = target.value;
     // popularFilter.add(value);
@@ -84,7 +91,6 @@ export default function Main() {
         }
       });
     }
-    console.log("new list is ", newlist);
     setFilteredList(newlist);
   }, [popularFilter]);
 
@@ -109,9 +115,11 @@ export default function Main() {
       setPage(1);
     }
   };
-  console.log("popular filter is ", popularFilter);
   return (
     <>
+    {userIdentity.auth ? 
+    <>
+      <Header />
       <div className="containers mx-3 ">
         <div className="row">
           <div className="col-lg-4">
@@ -352,5 +360,13 @@ export default function Main() {
         </div>
       </div>
     </>
+    :
+    <>
+     
+    </>
+                }
+    </>
+
+
   );
 }
