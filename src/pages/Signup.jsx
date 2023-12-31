@@ -20,12 +20,14 @@ function Signup() {
         let result = await userServ.signup(userData)
         if(result.exist){
             window.alert(result.message)
+            navigate("/signup");
         }else{
           window.alert(result.message)
+          window.localStorage.setItem(email, JSON.stringify(userData))
+          setUserIdentity({...userIdentity,auth:true,email:email})
+          navigate("/")
         }
-        window.localStorage.setItem(email, JSON.stringify(userData))
-        setUserIdentity({...userIdentity,auth:true,email:email})
-        navigate("/")
+        
     }
 
 
