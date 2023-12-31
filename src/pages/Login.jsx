@@ -16,7 +16,7 @@ function Login() {
         const result = await userServ.login(userdata);
         if(result.verified){
             setUserIdentity({...userIdentity,auth:true,email:email})
-            window.localStorage.setItem(email , JSON.stringify(result.finduser))
+            window.localStorage.setItem(email , result.finduser)
             navigate("/")
         }else{
             window.alert(result.message)
