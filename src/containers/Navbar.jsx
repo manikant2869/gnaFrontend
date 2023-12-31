@@ -13,7 +13,7 @@ export default function Navbar() {
       const username = user.first_name + " " + user.last_name;
       setUsername(username);
     }
-  }, [userIdentity.auth]);
+  }, [userIdentity]);
   function handleLogout(){
     window.localStorage.clear();
     setUserIdentity({auth:false,email:null})
