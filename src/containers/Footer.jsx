@@ -3,7 +3,7 @@ import DraftsOutlinedIcon from '@mui/icons-material/DraftsOutlined';
 export default function Footer() {
   return (
     <section>
-      <div className="row footer_section p-3 my-2 footer-width">
+      <div className="row footer_section p-3  footer-width">
         <div className="col-lg-6">
            <div className="row">
             <div className="col-sm-2 mt-2">
@@ -27,9 +27,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <footer className="bg-gradient mt-5">
-        <div className="footer-main">
-          <div className="container">
+      <footer className="bg-gradient ">
+          <div className="mt-4">
             <div className="row mx-4 ">
               <div className="col-lg-2 col-md-12 ">
                 <h6 className="fw-normal">Contact Us</h6>
@@ -96,7 +95,6 @@ export default function Footer() {
               </div>
             </div>
           </div>
-        </div>   
       </footer>
     </section>
   );

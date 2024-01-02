@@ -36,7 +36,7 @@ function Login() {
         <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder='Password' className='password' required />
         <button className='submit-btn' type='submit'>Log In</button>
         <h2 style={{color:"red"}}>{ confirm ? confirm : null }</h2>
-        <button className='link-btn'><Link to= "/register">Don't have an account? Register here</Link></button>
+        <button className='link-btn'><Link to= "/signup">Don't have an account? Register here</Link></button>
 
        </form>
       
